@@ -13,7 +13,7 @@ class Account {
 }
 
 class User extends Account {
-    String user_id; // given to user 9must have random numbers in it)
+    String user_id; // given to user (must have random numbers in it)
     String fname;
     String lname;
     String email;

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 class Account {
-    long amount = 0;
+    protected long amount = 0;
 
     public long getBalance() {
         return amount;
@@ -12,33 +12,47 @@ class Account {
 }
 
 class User extends Account {
-    String user_id; // given to user (must have random numbers in it)
-    // DOB will be added later (probably)
-    String fname;
-    String lname;
-    String email;
-    String phone_num;
-    int login_PIN;
+    // given to user (must have random numbers in it)
+    protected String userId; 
+    protected String fname;
+    protected String lname;
+    protected String email;
+    protected String phoneNum;
+    protected int loginPIN;
 
-    String account_type = "current";
-    ArrayList<String> user_logs = new ArrayList<String>();
+    String accountType = "current";
+    ArrayList<String> userLogs = new ArrayList<String>();
 
-    // constructor
-    User (String user_id, String fname, String lname, String email, String phone_num, int login_PIN) {
-        this.user_id = user_id;
+    // default constructor
+    User() {}
+
+    // constructor with data elements
+    User (String userId, String fname, String lname, String email, String phoneNum, int loginPIN, long amount) {
+        super();
+
+        this.userId = userId;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
-        this.phone_num = phone_num;
-        this.login_PIN = login_PIN;
+        this.phoneNum = phoneNum;
+        this.loginPIN = loginPIN;
+        this.amount = amount;
 
         // create temporary object to add to users_list
-        User temp_user = new User(this.user_id, this.fname = fname, this.lname, this.email, this.phone_num, this.login_PIN);
-        Admin.users_list.add(temp_user);
+        User tempUser = new User();
+        tempUser.userId = this.userId;
+        tempUser.fname = this.fname;
+        tempUser.lname = this.lname;
+        tempUser.email = this.email;
+        tempUser.phoneNum = this.phoneNum;
+        tempUser.loginPIN = this.loginPIN;
+        tempUser.amount = this.amount;
+        Admin.usersList.add(tempUser);
     }
 
-    public boolean login(int login_PIN) {
-        if (this.login_PIN == login_PIN)
+    // login as user
+    public boolean login(int loginPIN) {
+        if (this.loginPIN == loginPIN)
             return true;
 
         return false;
@@ -46,6 +60,11 @@ class User extends Account {
 
     public void getDetails() {
         // Print above details (don't print account balance)
+        System.out.println("User ID     : " + userId);
+        System.out.println("First name  : " + fname);
+        System.out.println("Last name   : " + lname);
+        System.out.println("Email ID    : " + email);
+        System.out.println("Phone number: " + phoneNum);
     }
 
     // the function transfers amount form user1 to user2
@@ -57,25 +76,27 @@ class User extends Account {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
         Date date = new Date();  
 
-        String log = "User " + user1.user_id + " transferred $" + money + " to " + user2.user_id + " | " + formatter.format(date);
-        user_logs.add(log);
-        Admin.overall_logs.add(log);
+        String log = "User " + user1.userId + " transferred $" + money + " to " + user2.userId + " | " + formatter.format(date);
+        userLogs.add(log);
+        Admin.overallLogs.add(log);
     }
     
     public void viewHistory() {
-        for (int i = 0; i < user_logs.size(); i++)
-            System.out.println(user_logs.get(i));
+        for (int i = 0; i < userLogs.size(); i++)
+            System.out.println(userLogs.get(i));
     }
 }
 
-class Savings_Account extends User {
-    @SuppressWarnings("unused")
-    Savings_Account(String user_id, String fname, String lname, String email, String phone_num, int login_PIN) {
-        super(user_id, fname, lname, email, phone_num, login_PIN);
-        account_type = "savings";
+class savingsAccount extends User {
 
-        //  we'll decide whether we want to maintain a particular interest rate or if we wanna give an option to the user to change it
-        double interest_rate = 5;
+    // the user has an option to choose interest rate
+    int interestRate;
+
+    savingsAccount(String userId, String fname, String lname, String email, String phoneNum, int loginPIN, long amount, int interestRate) {
+        super(userId, fname, lname, email, phoneNum, loginPIN, amount);
+
+        this.accountType = "savings";
+        this.interestRate = interestRate;
 
         // We have to add a function to add interest to the amount after a particular time period
     }

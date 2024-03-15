@@ -5,9 +5,8 @@ public class Bank {
         Admin admin = new Admin();
         admin.isAdmin("cs23b069", "Spongebob@123");
         
-        // Dry running admin features
-        
-        // System.out.println(admin.phone_num);
+        // Dry running private admin features
+        // System.out.println(admin.phoneNum);
         // System.out.println(admin.email);
         // System.out.println(admin.username);
         // System.out.println(admin.password);

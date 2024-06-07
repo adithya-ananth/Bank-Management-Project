@@ -1,4 +1,4 @@
-A simple yet effecient Bank Management System created using Java and Java Swing, integrated with a MySQL database.
+An interactive Bank Management System created using Java and Java Swing, integrated with a MySQL database.
 
 1. The application employs basic bank functionalities such as account creation, balance checking, deposit and withdrawl, as well as user transaction.
 2. It also provides a feature to avail and repay loans.

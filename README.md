@@ -4,10 +4,12 @@ A user-interactive Bank Management Application built with Java Swing and MySQL d
 
 ## Features
 
-- **Account Management**: Create accounts, secure login, and profile management
-- **Banking Operations**: Balance inquiry, deposits, withdrawals, and transaction history
-- **Loan Services**: Apply for loans, track status, and make repayments
-- **Database Integration**: Complete transaction logging and data integrity
+- **Account Creation**: Create new bank accounts
+- **Balance Checking**: Check current account balance
+- **Deposit and Withdrawal**: Add or remove funds from accounts
+- **User Transactions**: Handle various transaction types
+- **Loan Services**: Avail and repay loans
+- **Transaction History**: View account details and transaction history through database
 
 ## Tech Stack
 
@@ -23,19 +25,3 @@ A user-interactive Bank Management Application built with Java Swing and MySQL d
 - Implemented core OOP principles with clean architecture
 - Seamless MySQL integration with efficient data management
 - Intuitive GUI design with comprehensive banking features
-
-## Project Structure
-
-```
-Bank-Management-Project/
-├── src/
-│   ├── models/          # Data models (Account, Customer, Loan)
-│   ├── views/           # GUI components (Swing forms)
-│   ├── controllers/     # Business logic controllers
-│   └── database/        # Database connection and queries
-├── database/
-│   ├── schema.sql       # Database schema
-│   └── sample_data.sql  # Sample data
-└── lib/
-    └── mysql-connector-java.jar
-```
